@@ -13,6 +13,7 @@
 package org.activiti.workflow.simple.converter.json;
 
 import java.io.InputStream;
+import java.io.Serializable;
 import java.io.Writer;
 import java.util.List;
 
@@ -43,9 +44,11 @@ import org.codehaus.jackson.map.ObjectMapper;
  * 
  * @author Frederik Heremans
  */
-public class SimpleWorkflowJsonConverter {
+public class SimpleWorkflowJsonConverter implements Serializable{
 
-	protected ObjectMapper objectMapper;
+    private static final long serialVersionUID = 1L;
+    
+    protected ObjectMapper objectMapper;
 	protected List<Class<?>> additionalModelClasses;
 
 	/**
