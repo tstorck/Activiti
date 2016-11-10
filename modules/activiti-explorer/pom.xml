@@ -207,6 +207,27 @@
       <scope>compile</scope>
     </dependency>
 
+    <dependency>
+        <groupId>net.pearlchain.pearlchain</groupId>
+        <artifactId>prl-interfaces</artifactId>
+        <version>4-TRUNK</version>
+    </dependency>
+
+    <dependency>
+        <groupId>net.pearlchain.buildit</groupId>
+        <artifactId>util-middleware-pwms-common</artifactId>
+        <version>4.1.0.1</version>
+    </dependency>
+    <dependency>
+        <groupId>net.pearlchain.buildit</groupId>
+        <artifactId>util-middleware-pwms-client-jetty8</artifactId>
+        <version>4.1.0.1</version>
+    </dependency>
+    <dependency>
+        <groupId>net.pearlchain.buildit</groupId>
+        <artifactId>util-client</artifactId>
+        <version>4.1.0.1</version>
+    </dependency>
   </dependencies>
 
   <profiles>

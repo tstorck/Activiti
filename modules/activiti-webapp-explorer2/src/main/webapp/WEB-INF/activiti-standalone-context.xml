@@ -6,7 +6,17 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd">
-       
+
+    <bean id="pwmsClientProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:pwmsClient.properties" />
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+    </bean>
+  <import resource="classpath:net/pearlchain/middelware/pwms/common/serialization/serialization.pwms.ac.xml" />
+  <import resource="classpath:net/pearlchain/middelware/pwms/common/serialization/json/jsonSerialization.pwms.ac.xml" />
+  <import resource="classpath:net/pearlchain/middelware/pwms/common/serialization/json/jsonJackson.pwms.ac.xml" />
+  <import resource="classpath:net/pearlchain/middelware/pwms/client/client.pwms.ac.xml" />
+  <import resource="classpath:net/pearlchain/prl/interfaces/core/core.interfaces.pwms.ac.xml" />
+
   <!-- This Spring config file is NOT used in Alfresco, as the Activiti engine is wired in a different way there -->
        
   <bean id="demoDataGenerator" class="org.activiti.explorer.demo.DemoDataGenerator" init-method="init">
@@ -67,4 +77,9 @@
   </bean>
   
   <bean id="activitiDelegateService" class="net.pearlchain.prl.services.DummyDelegateService" />
+  <bean id="prl-coreServiceExternal" parent="build-middel-pwms-json-proxy">
+    <property name="endpointRef" ref="prl-coreServiceExternalEndpointReference" />
+    <property name="contentType" value="JSON" />
+  </bean>
+  
 </beans>
