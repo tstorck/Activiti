@@ -8,3 +8,9 @@ target
 .settings
 .DS_Store
 *.bpmn/
+*.done.files
+local
+logs
+/target
+/*/target
+/*/bin

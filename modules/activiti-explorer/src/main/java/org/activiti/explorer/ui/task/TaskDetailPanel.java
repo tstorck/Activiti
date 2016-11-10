@@ -14,6 +14,9 @@ package org.activiti.explorer.ui.task;
 
 import java.util.Map;
 
+import net.pearlchain.prl.interfaces.core.CoreServiceExternal;
+import net.pearlchain.prl.services.PrlSpringContext;
+
 import org.activiti.engine.FormService;
 import org.activiti.engine.ProcessEngines;
 import org.activiti.engine.RepositoryService;
@@ -67,6 +70,7 @@ public class TaskDetailPanel extends DetailPanel {
   protected transient TaskService taskService;
   protected transient FormService formService;
   protected transient RepositoryService repositoryService;
+  protected transient CoreServiceExternal prlCoreServiceExternal;
   protected ViewManager viewManager;
   protected I18nManager i18nManager;
   protected NotificationManager notificationManager;
@@ -88,6 +92,7 @@ public class TaskDetailPanel extends DetailPanel {
     this.taskService = ProcessEngines.getDefaultProcessEngine().getTaskService();
     this.formService = ProcessEngines.getDefaultProcessEngine().getFormService();
     this.repositoryService = ProcessEngines.getDefaultProcessEngine().getRepositoryService();
+    this.prlCoreServiceExternal = (CoreServiceExternal) PrlSpringContext.getApplicationContext().getBean("prl-coreServiceExternal");
     this.viewManager = ExplorerApp.get().getViewManager();
     this.i18nManager = ExplorerApp.get().getI18nManager();
     this.notificationManager = ExplorerApp.get().getNotificationManager();
@@ -312,7 +317,8 @@ public class TaskDetailPanel extends DetailPanel {
         @Override
         protected void handleFormSubmit(FormPropertiesEvent event) {
           Map<String, String> properties = event.getFormProperties();
-          formService.submitTaskFormData(task.getId(), properties);
+          //formService.submitTaskFormData(task.getId(), properties);
+          prlCoreServiceExternal.submitTaskFormData(task.getId(), properties);
           notificationManager.showInformationNotification(Messages.TASK_COMPLETED, task.getName());
           taskPage.refreshSelectNext();
         }

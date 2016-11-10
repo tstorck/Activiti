@@ -82,4 +82,6 @@
     <property name="contentType" value="JSON" />
   </bean>
   
+  <!--  little hack to get our coreserviceexternal in the tasks pages -->
+  <bean id="prlSpringContext" class="net.pearlchain.prl.services.PrlSpringContext" />
 </beans>
