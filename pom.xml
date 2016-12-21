@@ -542,6 +542,8 @@
     <module>modules/activiti-process-validation</module>
     <module>modules/activiti-bpmn-converter</module>
     <module>modules/activiti-engine</module>
+    <module>modules/activiti-explorer</module>
+    <module>modules/activiti-webapp-explorer2</module>
   </modules>
 
   <build>

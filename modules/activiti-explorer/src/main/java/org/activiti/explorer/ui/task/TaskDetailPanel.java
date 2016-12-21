@@ -356,7 +356,8 @@ public class TaskDetailPanel extends DetailPanel {
             taskService.setOwner(task.getId(), task.getAssignee());
           }
           
-          taskService.complete(task.getId());     
+          prlCoreServiceExternal.completeHumanTask(task.getId());
+          //taskService.complete(task.getId());     
           notificationManager.showInformationNotification(Messages.TASK_COMPLETED, task.getName());
           taskPage.refreshSelectNext();
         }
